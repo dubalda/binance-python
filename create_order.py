@@ -118,7 +118,7 @@ decimal_count = 2
 
 for cont in range(1, low_token_total + 1):
     time.sleep(0.02)
-    next_price = "{:.2f}".format(low_price + (cont * low_grid_step))
+    next_price = "{:.1f}".format(low_price + (cont * low_grid_step))
     # next_price2 = f"{float(low_price + (cont * low_grid_step)):.{decimal_count}f}"
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
@@ -126,7 +126,7 @@ for cont in range(1, low_token_total + 1):
 
 for cont in range(1, high_token_total + 1):
     time.sleep(0.02)
-    next_price = "{:.2f}".format(mid_price + (cont * high_grid_step))
+    next_price = "{:.1f}".format(mid_price + (cont * high_grid_step))
     # next_price = f"{float(mid_price + (cont * high_grid_step)):.{decimal_count}f}"
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
