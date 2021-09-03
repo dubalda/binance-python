@@ -115,6 +115,7 @@ high_token_total = token_total // 3
 mid_price = float(round(low_price + (high_price - low_price) / 2, 2))
 low_grid_step = float(round((mid_price - low_price) / low_token_total, 2))
 high_grid_step = float(round((mid_price - low_price) / high_token_total, 2))
+print(token, "total:", quantity_per_order*(low_token_total+high_token_total))
 print(">>> Low grid:", low_token_total, "orders from", low_price, "to", mid_price, "with step", low_grid_step)
 print(">>> High grid:", high_token_total, "orders from", mid_price, "to", high_price, "with step", high_grid_step)
 
