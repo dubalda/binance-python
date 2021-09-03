@@ -9,7 +9,7 @@ https://binance-docs.github.io/apidocs/futures/en/#sdk-and-code-demonstration
 ## setup
 
 ```
-./install.sh
+./setup.py install
 ```
 
 ## api and secret
