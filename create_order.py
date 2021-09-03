@@ -5,10 +5,15 @@ from binance_d.constant.test import *
 from binance_d.base.printobject import *
 from binance_d.model.constant import *
 import time
+import json
 
-g_api_key = os.environ.get('binance_api')
-g_secret_key = os.environ.get('binance_secret')
-g_url = os.environ.get('binance_futures_url')
+secret_file = open('secrets.json', )
+secrets = json.load(secret_file)
+secret_file.close()
+
+g_api_key = secrets['binance_api']
+g_secret_key = secrets['binance_secret']
+g_url = secrets['binance_futures_url']
 
 request_client = RequestClient(api_key=g_api_key, secret_key=g_secret_key, url=g_url)
 
