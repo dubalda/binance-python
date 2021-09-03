@@ -42,7 +42,7 @@ except KeyError:
     exit()
 
 token = token_list[trade_pair]
-quantity_per_order = quantity_per_order_list[trade_pair]
+quantity_per_order = int(quantity_per_order_list[trade_pair])
 
 print("Trade pair:", trade_pair)
 print("Token:", token)
@@ -102,7 +102,7 @@ if low_price > high_price:
 
 token_total = 0
 try:
-    token_total = int(input("Input number orders (max 320 orders, "+quantity_per_order+token+" in 1 order): "))
+    token_total = int(input("Input number orders (max 320 orders, "+str(quantity_per_order)+token+" in 1 order): "))
 except ValueError:
     print("Not a number")
     exit()
@@ -129,7 +129,7 @@ for cont in range(1, low_token_total + 1):
     # next_price2 = f"{float(low_price + (cont * low_grid_step)):.{decimal_count}f}"
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
-                                       price=next_price, quantity=int(quantity_per_order), timeInForce=TimeInForce.GTC)
+                                       price=next_price, quantity=quantity_per_order, timeInForce=TimeInForce.GTC)
 
 for cont in range(1, high_token_total + 1):
     time.sleep(0.02)
@@ -137,7 +137,7 @@ for cont in range(1, high_token_total + 1):
     # next_price = f"{float(mid_price + (cont * high_grid_step)):.{decimal_count}f}"
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
-                                       price=next_price, quantity=int(quantity_per_order), timeInForce=TimeInForce.GTC)
+                                       price=next_price, quantity=quantity_per_order, timeInForce=TimeInForce.GTC)
 
 # Get all orders
 # result = request_client.get_all_orders(symbol=trade_pair)
