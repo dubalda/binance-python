@@ -27,9 +27,9 @@ token_list = {
   'SOLUSD_PERP': "SOL"
 }
 
-trade_pair: str = ""
+trade_pair = ""
 try:
-    trade_pair: str = trade_pair_list[str(input("1. BTCUSD_PERP, 2. SOLUSD_PERP: "))]
+    trade_pair = trade_pair_list[str(input("1. BTCUSD_PERP, 2. SOLUSD_PERP: "))]
 except KeyError:
     print("Wrong number, select 1 or 2")
     exit()
@@ -40,12 +40,12 @@ print("Trade pair:", trade_pair)
 print("Token:", token)
 
 # Change leverage
-min_leverage: int = 2
-max_leverage: int = 3
-set_leverage: int = 2
+min_leverage = 2
+max_leverage = 3
+set_leverage = 2
 
 try:
-    set_leverage: int = int(input("Set leverage from 2 to 3: "))
+    set_leverage = int(input("Set leverage from 2 to 3: "))
 except ValueError:
     print("not number")
     exit()
@@ -92,17 +92,17 @@ if low_price > high_price:
     print(low_price, "must be less then", high_price)
     exit()
 
-token_total: int = 0
+token_total = 0
 try:
-    token_total: int = int(input("Input "+token+" total: "))
+    token_total = int(input("Input "+token+" total: "))
 except ValueError:
     print("Not a number")
     exit()
 if token_total < 1:
     print(token_total, "must be more then 0")
     exit()
-low_token_total: int = token_total // 3 * 2
-high_token_total: int = token_total // 3
+low_token_total = token_total // 3 * 2
+high_token_total = token_total // 3
 
 mid_price = float(round(low_price + (high_price - low_price) / 2, 2))
 low_grid_step = float(round((mid_price - low_price) / low_token_total, 2))
@@ -116,14 +116,16 @@ decimal_count = 2
 
 for cont in range(1, low_token_total + 1):
     time.sleep(0.02)
-    next_price = f"{float(low_price + (cont * low_grid_step)):.{decimal_count}f}"
+    next_price = "{:.2f}".format(low_price + (cont * low_grid_step))
+    # next_price2 = f"{float(low_price + (cont * low_grid_step)):.{decimal_count}f}"
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
                                        price=next_price, quantity=1, timeInForce=TimeInForce.GTC)
 
 for cont in range(1, high_token_total + 1):
     time.sleep(0.02)
-    next_price = f"{float(mid_price + (cont * high_grid_step)):.{decimal_count}f}"
+    next_price = "{:.2f}".format(mid_price + (cont * high_grid_step))
+    # next_price = f"{float(mid_price + (cont * high_grid_step)):.{decimal_count}f}"
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
                                        price=next_price, quantity=1, timeInForce=TimeInForce.GTC)
