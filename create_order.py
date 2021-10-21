@@ -21,32 +21,80 @@ request_client = RequestClient(api_key=g_api_key, secret_key=g_secret_key, url=g
 
 trade_pair_list = {
     '1': "BTCUSD_PERP",
-    '2': "SOLUSD_PERP"
-}
-
-token_list = {
-  'BTCUSD_PERP': "CONT",
-  'SOLUSD_PERP': "CONT"
+    '2': "SOLUSD_PERP",
+    '3': "ETHUSD_PERP",
+    '4': "BNBUSD_PERP",
+    '5': "ADAUSD_PERP",
+    '6': "DOTUSD_PERP",
+    '7': "XRPUSD_PERP",
+    '8': "LUNAUSD_PERP",
+    '9': "LTCUSD_PERP",
+    '10': "LINKUSD_PERP",
+    '11': "BCHUSD_PERP",
+    '12': "XLMUSD_PERP",
+    '13': "EOSUSD_PERP",
+    '14': "EGLDUSD_PERP",
+    '15': "FILUSD_PERP",
+    '16': "ETCUSD_PERP",
+    '17': "THETAUSD_PERP",
+    '18': "UNIUSD_PERP",
+    '19': "TRXUSD_PERP"
 }
 
 quantity_per_order_list = {
-  'BTCUSD_PERP': "1",
-  'SOLUSD_PERP': "20"
+    'BTCUSD_PERP': "1",
+    'SOLUSD_PERP': "10",
+    'ETHUSD_PERP': "1",
+    'BNBUSD_PERP': "1",
+    'ADAUSD_PERP': "1",
+    'DOTUSD_PERP': "1",
+    'XRPUSD_PERP': "1",
+    'LUNAUSD_PERP': "1",
+    'LTCUSD_PERP': "1",
+    'LINKUSD_PERP': "1",
+    'BCHUSD_PERP': "1",
+    'XLMUSD_PERP': "1",
+    'EOSUSD_PERP': "1",
+    'EGLDUSD_PERP': "1",
+    'FILUSD_PERP': "1",
+    'ETCUSD_PERP': "1",
+    'THETAUSD_PERP': "1",
+    'UNIUSD_PERP': "1",
+    'TRXUSD_PERP': "1"
 }
 
 cont_to_usd_list = {
-  'BTCUSD_PERP': "100",
-  'SOLUSD_PERP': "10"
+    'BTCUSD_PERP': "100",
+    'SOLUSD_PERP': "10",
+    'ETHUSD_PERP': "10",
+    'BNBUSD_PERP': "10",
+    'ADAUSD_PERP': "10",
+    'DOTUSD_PERP': "10",
+    'XRPUSD_PERP': "10",
+    'LUNAUSD_PERP': "10",
+    'LTCUSD_PERP': "10",
+    'LINKUSD_PERP': "10",
+    'BCHUSD_PERP': "10",
+    'XLMUSD_PERP': "10",
+    'EOSUSD_PERP': "10",
+    'EGLDUSD_PERP': "10",
+    'FILUSD_PERP': "10",
+    'ETCUSD_PERP': "10",
+    'THETAUSD_PERP': "10",
+    'UNIUSD_PERP': "10",
+    'TRXUSD_PERP': "10"
 }
 
 trade_pair = ""
+
+print(trade_pair_list)
 try:
-    trade_pair = trade_pair_list[str(input("1. BTCUSD_PERP, 2. SOLUSD_PERP: "))]
+    trade_pair = trade_pair_list[str(input("Select token: "))]
 except KeyError:
-    print("Wrong number, select 1 or 2")
+    print("Wrong token number")
     exit()
 
-token = token_list[trade_pair]
+token = "CONT"
 quantity_per_order = int(quantity_per_order_list[trade_pair])
 cont_to_usd = int(cont_to_usd_list[trade_pair])
 
