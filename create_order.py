@@ -43,13 +43,13 @@ trade_pair_list = {
 
 quantity_per_order_list = {
     'BTCUSD_PERP': "1",
-    'SOLUSD_PERP': "10",
+    'SOLUSD_PERP': "100",
     'ETHUSD_PERP': "1",
     'BNBUSD_PERP': "1",
     'ADAUSD_PERP': "1",
     'DOTUSD_PERP': "1",
     'XRPUSD_PERP': "1",
-    'LUNAUSD_PERP': "1",
+    'LUNAUSD_PERP': "10",
     'LTCUSD_PERP': "1",
     'LINKUSD_PERP': "1",
     'BCHUSD_PERP': "1",
