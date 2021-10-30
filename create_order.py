@@ -137,7 +137,7 @@ print(cont_to_usd, "USD per 1 CONT")
 
 input_high_price = input("Input max order PRICE (current price " + str(current_price) + "$): ")
 try:
-    high_price = int(input_high_price)
+    high_price = float(input_high_price)
 except ValueError:
     print(input_high_price, "not number")
     exit()
@@ -147,7 +147,7 @@ if high_price > current_price:
 
 input_low_price = input("Input min order PRICE: ")
 try:
-    low_price = int(input_low_price)
+    low_price = float(input_low_price)
 except ValueError:
     print(input_low_price, "not number")
     exit()
@@ -167,27 +167,47 @@ if token_total < 1:
 low_token_total = token_total // 3 * 2
 high_token_total = token_total // 3
 
-mid_price = float(round(low_price + (high_price - low_price) / 2, 2))
-low_grid_step = float(round((mid_price - low_price) / low_token_total, 2))
-high_grid_step = float(round((mid_price - low_price) / high_token_total, 2))
+if current_price > 10000:
+    round_decimal = 0
+    format_decimal = "{:.0f}"
+elif current_price > 1000:
+    round_decimal = 1
+    format_decimal = "{:.1f}"
+elif current_price > 100:
+    round_decimal = 2
+    format_decimal = "{:.2f}"
+elif current_price > 10:
+    round_decimal = 3
+    format_decimal = "{:.3f}"
+elif current_price > 1:
+    round_decimal = 4
+    format_decimal = "{:.4f}"
+else:
+    round_decimal = 5
+    format_decimal = "{:.5f}"
+print('round_decimal', round_decimal)
+print('format_decimal', format_decimal)
+
+mid_price = float(round(low_price + (high_price - low_price) / 2, round_decimal))
+low_grid_step = float(round((mid_price - low_price) / low_token_total, round_decimal))
+high_grid_step = float(round((mid_price - low_price) / high_token_total, round_decimal))
 print("Total:", quantity_per_order*(low_token_total+high_token_total), token, "/", cont_to_usd*quantity_per_order*(low_token_total+high_token_total), "USD")
 print(">>> Low grid:", low_token_total, "orders from", low_price, "to", mid_price, "with step", low_grid_step)
 print(">>> High grid:", high_token_total, "orders from", mid_price, "to", high_price, "with step", high_grid_step)
 
 input("Press Enter to continue (Ctrl+D for break)...")
 
-decimal_count = 2
 
 for cont in range(1, low_token_total + 1):
     time.sleep(0.02)
-    next_price = "{:.1f}".format(low_price + (cont * low_grid_step))
+    next_price = format_decimal.format(low_price + (cont * low_grid_step))
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
                                        price=next_price, quantity=quantity_per_order, timeInForce=TimeInForce.GTC)
 
 for cont in range(1, high_token_total + 1):
     time.sleep(0.02)
-    next_price = "{:.1f}".format(mid_price + (cont * high_grid_step))
+    next_price = format_decimal.format(mid_price + (cont * high_grid_step))
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
                                        price=next_price, quantity=quantity_per_order, timeInForce=TimeInForce.GTC)
