@@ -164,8 +164,9 @@ except ValueError:
 if token_total < 1:
     print(token_total, "must be more then 0")
     exit()
-low_token_total = token_total // 3 * 2
 high_token_total = token_total // 3
+# low_token_total = token_total // 3 * 2
+low_token_total = token_total - high_token_total
 
 if current_price > 10000:
     round_decimal = 0
