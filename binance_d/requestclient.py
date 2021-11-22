@@ -270,7 +270,7 @@ class RequestClient(object):
 
     def post_order(self, symbol: 'str', side: 'OrderSide', ordertype: 'OrderType', 
                 timeInForce: 'TimeInForce' = TimeInForce.INVALID, quantity: 'float' = None,
-                reduceOnly: 'boolean' = None, price: 'float' = None,
+                reduceOnly: 'boolean' = None, price: 'str' = None,
                 newClientOrderId: 'str' = None, stopPrice: 'float' = None, 
                 workingType: 'WorkingType' = WorkingType.INVALID, closePosition: 'boolean' = None,
                 positionSide: 'PositionSide' = PositionSide.INVALID, callbackRate: 'float' = None,

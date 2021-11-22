@@ -39,7 +39,9 @@ trade_pair_list = {
     '16': "ETCUSD_PERP",
     '17': "THETAUSD_PERP",
     '18': "UNIUSD_PERP",
-    '19': "TRXUSD_PERP"
+    '19': "TRXUSD_PERP",
+    '20': "FTMUSD_PERP",
+    '21': "MANAUSD_PERP"
 }
 
 # Price of CONT in $
@@ -62,7 +64,9 @@ cont_to_usd_list = {
     'ETCUSD_PERP': "10",
     'THETAUSD_PERP': "10",
     'UNIUSD_PERP': "10",
-    'TRXUSD_PERP': "10"
+    'TRXUSD_PERP': "10",
+    'FTMUSD_PERP': "10",
+    'MANAUSD_PERP': "10"
 }
 
 # Max orders per token
@@ -85,7 +89,9 @@ orders_total_list = {
     'ETCUSD_PERP': "3",
     'THETAUSD_PERP': "6",
     'UNIUSD_PERP': "9",
-    'TRXUSD_PERP': "6"
+    'TRXUSD_PERP': "6",
+    'FTMUSD_PERP': "3",
+    'MANAUSD_PERP': "3"
 }
 
 # CONT in one order
@@ -108,7 +114,9 @@ cont_per_order_list = {
     'ETCUSD_PERP': "1",
     'THETAUSD_PERP': "1",
     'UNIUSD_PERP': "2",
-    'TRXUSD_PERP': "1"
+    'TRXUSD_PERP': "1",
+    'FTMUSD_PERP': "1",
+    'MANAUSD_PERP': "1"
 }
 
 trade_pair = ""
@@ -130,7 +138,9 @@ max_leverage: int = 3
 default_leverage: int = 2
 set_leverage: int = default_leverage
 
-input_set_leverage: str = input("Set leverage from " + str(min_leverage) + " to " + str(max_leverage) + " [default: " + str(default_leverage) + "]: ")
+input_set_leverage: str = input(
+    "Set leverage from " + str(min_leverage) + " to " + str(max_leverage) + " [default: " + str(
+        default_leverage) + "]: ")
 
 if input_set_leverage != "":
     try:
@@ -190,8 +200,10 @@ if input_low_price != "":
 
 recommend_orders: int = int(orders_total_list[trade_pair])
 token_total: int = recommend_orders
-print("Max orders=320, 1CONT=$" + str(cont_to_usd) + ", " + str(cont_per_order) + " CONT/$" + str(cont_per_order * cont_to_usd) + " per order")
-input_token_total: str = input("Input number orders [default: " + str(recommend_orders) + " orders / " + str(recommend_orders * cont_per_order) + " CONT / $" + str (recommend_orders * cont_per_order * cont_to_usd) + "]")
+print("Max orders=320, 1CONT=$" + str(cont_to_usd) + ", " + str(cont_per_order) + " CONT/$" + str(
+    cont_per_order * cont_to_usd) + " per order")
+input_token_total: str = input("Input number orders [default: " + str(recommend_orders) + " orders / " + str(
+    recommend_orders * cont_per_order) + " CONT / $" + str(recommend_orders * cont_per_order * cont_to_usd) + "]")
 if input_token_total != "":
     try:
         token_total = int(input_token_total)
@@ -229,28 +241,28 @@ print('format_decimal', format_decimal)
 mid_price: float = float(round(low_price + (high_price - low_price) / 2, round_decimal))
 low_grid_step: float = float(round((mid_price - low_price) / low_token_total, round_decimal))
 high_grid_step: float = float(round((mid_price - low_price) / high_token_total, round_decimal))
-print("Total:", cont_per_order*(low_token_total+high_token_total), token, "/", cont_to_usd*cont_per_order*(low_token_total+high_token_total), "USD")
+print("Total:", cont_per_order * (low_token_total + high_token_total), token, "/",
+      cont_to_usd * cont_per_order * (low_token_total + high_token_total), "USD")
 print(">>> Low grid:", low_token_total, "orders from", low_price, "to", mid_price, "with step", low_grid_step)
 print(">>> High grid:", high_token_total, "orders from", mid_price, "to", high_price, "with step", high_grid_step)
 
 input("Press Enter to continue (Ctrl+D for break)...")
 
-
 for cont in range(1, low_token_total + 1):
     time.sleep(0.02)
-    next_price: float = round((low_price + (cont * low_grid_step))*10, round_decimal)//10
-    #next_price = format_decimal.format(low_price + (cont * low_grid_step))
+    next_price: str = format_decimal.format(low_price + (cont * low_grid_step))
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
-                                       price=round(float(next_price), round_decimal), quantity=cont_per_order, timeInForce=TimeInForce.GTC)
+                                       price=next_price, quantity=cont_per_order,
+                                       timeInForce=TimeInForce.GTC)
 
 for cont in range(1, high_token_total + 1):
     time.sleep(0.02)
-    next_price: float = round((mid_price + (cont * high_grid_step))*10, round_decimal)//10
-    #next_price = format_decimal.format(mid_price + (cont * high_grid_step))
+    next_price = format_decimal.format(mid_price + (cont * high_grid_step))
     print(">>> ", token, " ", cont, ": Price", next_price)
     result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
-                                       price=round(float(next_price), round_decimal), quantity=cont_per_order, timeInForce=TimeInForce.GTC)
+                                       price=next_price, quantity=cont_per_order,
+                                       timeInForce=TimeInForce.GTC)
 
 # Get all orders
 # result = request_client.get_all_orders(symbol=trade_pair)
