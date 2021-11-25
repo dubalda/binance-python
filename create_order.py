@@ -112,11 +112,11 @@ cont_per_order_list = {
     'EGLDUSD_PERP': "2",
     'FILUSD_PERP': "1",
     'ETCUSD_PERP': "1",
-    'THETAUSD_PERP': "1",
+    'THETAUSD_PERP': "2",
     'UNIUSD_PERP': "2",
     'TRXUSD_PERP': "1",
-    'FTMUSD_PERP': "1",
-    'MANAUSD_PERP': "1"
+    'FTMUSD_PERP': "2",
+    'MANAUSD_PERP': "2"
 }
 
 trade_pair = ""
