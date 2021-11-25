@@ -217,19 +217,19 @@ high_token_total: int = token_total // 3
 # low_token_total = token_total // 3 * 2
 low_token_total: int = token_total - high_token_total
 
-if current_price > 10000:
+if current_price > 1000:
     round_decimal = 0
     format_decimal = "{:.0f}"
-elif current_price > 1000:
+elif current_price > 100:
     round_decimal = 1
     format_decimal = "{:.1f}"
-elif current_price > 100:
+elif current_price > 10:
     round_decimal = 2
     format_decimal = "{:.2f}"
-elif current_price > 10:
+elif current_price > 1:
     round_decimal = 3
     format_decimal = "{:.3f}"
-elif current_price > 1:
+elif current_price > 0.1:
     round_decimal = 4
     format_decimal = "{:.4f}"
 else:
