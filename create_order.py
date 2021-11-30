@@ -103,7 +103,7 @@ cont_per_order_list = {
     'ADAUSD_PERP': "3",
     'DOTUSD_PERP': "2",
     'XRPUSD_PERP': "2",
-    'LUNAUSD_PERP': "4",
+    'LUNAUSD_PERP': "6",
     'LTCUSD_PERP': "2",
     'LINKUSD_PERP': "2",
     'BCHUSD_PERP': "2",
