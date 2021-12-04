@@ -71,8 +71,8 @@ cont_to_usd_list = {
 
 # Max orders per token
 orders_total_list = {
-    'BTCUSD_PERP': "45",
-    'SOLUSD_PERP': "60",
+    'BTCUSD_PERP': "30",
+    'SOLUSD_PERP': "90",
     'ETHUSD_PERP': "12",
     'BNBUSD_PERP': "18",
     'ADAUSD_PERP': "12",
@@ -97,7 +97,7 @@ orders_total_list = {
 # CONT in one order
 cont_per_order_list = {
     'BTCUSD_PERP': "1",
-    'SOLUSD_PERP': "25",
+    'SOLUSD_PERP': "15",
     'ETHUSD_PERP': "1",
     'BNBUSD_PERP': "2",
     'ADAUSD_PERP': "1",
