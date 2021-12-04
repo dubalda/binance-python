@@ -97,26 +97,26 @@ orders_total_list = {
 # CONT in one order
 cont_per_order_list = {
     'BTCUSD_PERP': "1",
-    'SOLUSD_PERP': "35",
-    'ETHUSD_PERP': "2",
-    'BNBUSD_PERP': "3",
-    'ADAUSD_PERP': "3",
-    'DOTUSD_PERP': "2",
-    'XRPUSD_PERP': "2",
-    'LUNAUSD_PERP': "6",
-    'LTCUSD_PERP': "2",
-    'LINKUSD_PERP': "2",
-    'BCHUSD_PERP': "2",
-    'XLMUSD_PERP': "2",
+    'SOLUSD_PERP': "25",
+    'ETHUSD_PERP': "1",
+    'BNBUSD_PERP': "2",
+    'ADAUSD_PERP': "1",
+    'DOTUSD_PERP': "1",
+    'XRPUSD_PERP': "1",
+    'LUNAUSD_PERP': "5",
+    'LTCUSD_PERP': "1",
+    'LINKUSD_PERP': "1",
+    'BCHUSD_PERP': "1",
+    'XLMUSD_PERP': "1",
     'EOSUSD_PERP': "1",
-    'EGLDUSD_PERP': "2",
+    'EGLDUSD_PERP': "1",
     'FILUSD_PERP': "1",
     'ETCUSD_PERP': "1",
-    'THETAUSD_PERP': "2",
-    'UNIUSD_PERP': "2",
+    'THETAUSD_PERP': "1",
+    'UNIUSD_PERP': "1",
     'TRXUSD_PERP': "1",
-    'FTMUSD_PERP': "2",
-    'MANAUSD_PERP': "2"
+    'FTMUSD_PERP': "1",
+    'MANAUSD_PERP': "1"
 }
 
 trade_pair = ""
