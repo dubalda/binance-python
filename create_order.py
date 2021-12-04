@@ -69,7 +69,7 @@ cont_to_usd_list = {
     'MANAUSD_PERP': "10"
 }
 
-# Max orders per token
+# Max orders per token.
 orders_total_list = {
     'BTCUSD_PERP': "30",
     'SOLUSD_PERP': "90",
