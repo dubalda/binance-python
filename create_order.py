@@ -42,9 +42,9 @@ trade_pair_list = {
     '19': "TRXUSD_PERP",
     '20': "FTMUSD_PERP",
     '21': "MANAUSD_PERP",
-    '21': "AVAXUSD_PERP",
-    '21': "NEARUSD_PERP",
-    '21': "MATICUSD_PERP"
+    '22': "AVAXUSD_PERP",
+    '23': "NEARUSD_PERP",
+    '24': "MATICUSD_PERP"
 }
 
 # Price of CONT in $
