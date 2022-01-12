@@ -41,7 +41,8 @@ trade_pair_list = {
     '18': "UNIUSD_PERP",
     '19': "TRXUSD_PERP",
     '20': "FTMUSD_PERP",
-    '21': "MANAUSD_PERP"
+    '21': "MANAUSD_PERP",
+    '22': "ATOMUSD_PERP"
 }
 
 # Price of CONT in $
@@ -66,7 +67,8 @@ cont_to_usd_list = {
     'UNIUSD_PERP': "10",
     'TRXUSD_PERP': "10",
     'FTMUSD_PERP': "10",
-    'MANAUSD_PERP': "10"
+    'MANAUSD_PERP': "10",
+    'ATOMUSD_PERP': "10"
 }
 
 # Max orders per token.
@@ -91,7 +93,8 @@ orders_total_list = {
     'UNIUSD_PERP': "9",
     'TRXUSD_PERP': "6",
     'FTMUSD_PERP': "3",
-    'MANAUSD_PERP': "3"
+    'MANAUSD_PERP': "3",
+    'ATOMUSD_PERP': "12"
 }
 
 # CONT in one order
@@ -116,7 +119,8 @@ cont_per_order_list = {
     'UNIUSD_PERP': "1",
     'TRXUSD_PERP': "1",
     'FTMUSD_PERP': "1",
-    'MANAUSD_PERP': "1"
+    'MANAUSD_PERP': "1",
+    'ATOMUSD_PERP': "2"
 }
 
 trade_pair = ""
