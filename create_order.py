@@ -42,7 +42,10 @@ trade_pair_list = {
     '19': "TRXUSD_PERP",
     '20': "FTMUSD_PERP",
     '21': "MANAUSD_PERP",
-    '22': "ATOMUSD_PERP"
+    '22': "AVAXUSD_PERP",
+    '23': "NEARUSD_PERP",
+    '24': "MATICUSD_PERP",
+    '25': "ATOMUSD_PERP"
 }
 
 # Price of CONT in $
@@ -68,6 +71,9 @@ cont_to_usd_list = {
     'TRXUSD_PERP': "10",
     'FTMUSD_PERP': "10",
     'MANAUSD_PERP': "10",
+    'AVAXUSD_PERP': "10",
+    'NEARUSD_PERP': "10",
+    'MATICUSD_PERP': "10",
     'ATOMUSD_PERP': "10"
 }
 
@@ -94,6 +100,9 @@ orders_total_list = {
     'TRXUSD_PERP': "6",
     'FTMUSD_PERP': "3",
     'MANAUSD_PERP': "3",
+    'AVAXUSD_PERP': "12",
+    'NEARUSD_PERP': "12",
+    'MATICUSD_PERP': "9",
     'ATOMUSD_PERP': "12"
 }
 
@@ -120,6 +129,9 @@ cont_per_order_list = {
     'TRXUSD_PERP': "1",
     'FTMUSD_PERP': "1",
     'MANAUSD_PERP': "1",
+    'AVAXUSD_PERP': "1",
+    'NEARUSD_PERP': "1",
+    'MATICUSD_PERP': "1",
     'ATOMUSD_PERP': "2"
 }
 
