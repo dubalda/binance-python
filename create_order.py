@@ -199,14 +199,14 @@ if high_price > current_price:
     print(high_price, "Max price must be less then", current_price)
     exit()
 
-low_price: float = 0.7 * high_price
-input_low_price: str = input("Input min order PRICE [default: 70% max price ($" + str(low_price) + ")]: ")
+low_price: float = 0.5 * high_price
+input_low_price: str = input("Input min order PRICE [default: 50% max price ($" + str(low_price) + ")]: ")
 
 if input_low_price != "":
     try:
         low_price = int(input_low_price)
-        if low_price < 0.4 * high_price:
-            print("Min price must be more than", 0.4 * high_price)
+        if low_price < 0.2 * high_price:
+            print("Min price must be more than", 0.2 * high_price)
             exit()
         if low_price > 0.99 * high_price:
             print("Min price must be less then", 0.99 * high_price)
