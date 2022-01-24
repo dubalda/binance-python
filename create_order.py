@@ -109,7 +109,7 @@ orders_total_list = {
 # CONT in one order
 cont_per_order_list = {
     'BTCUSD_PERP': "1",
-    'SOLUSD_PERP': "15",
+    'SOLUSD_PERP': "1",
     'ETHUSD_PERP': "1",
     'BNBUSD_PERP': "2",
     'ADAUSD_PERP': "1",
