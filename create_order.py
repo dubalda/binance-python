@@ -80,7 +80,7 @@ cont_to_usd_list = {
 # Max orders per token.
 orders_total_list = {
     'BTCUSD_PERP': "30",
-    'SOLUSD_PERP': "90",
+    'SOLUSD_PERP': "150",
     'ETHUSD_PERP': "12",
     'BNBUSD_PERP': "18",
     'ADAUSD_PERP': "12",
@@ -204,7 +204,7 @@ input_low_price: str = input("Input min order PRICE [default: 50% max price ($" 
 
 if input_low_price != "":
     try:
-        low_price = int(input_low_price)
+        low_price = float(input_low_price)
         if low_price < 0.2 * high_price:
             print("Min price must be more than", 0.2 * high_price)
             exit()
