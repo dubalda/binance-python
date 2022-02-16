@@ -45,7 +45,8 @@ trade_pair_list = {
     '22': "AVAXUSD_PERP",
     '23': "NEARUSD_PERP",
     '24': "MATICUSD_PERP",
-    '25': "ATOMUSD_PERP"
+    '25': "ATOMUSD_PERP",
+    '26': "XTZUSD_PERP"
 }
 
 # Price of CONT in $
@@ -74,13 +75,14 @@ cont_to_usd_list = {
     'AVAXUSD_PERP': "10",
     'NEARUSD_PERP': "10",
     'MATICUSD_PERP': "10",
-    'ATOMUSD_PERP': "10"
+    'ATOMUSD_PERP': "10",
+    'XTZUSD_PERP': "10"
 }
 
 # Max orders per token.
 orders_total_list = {
     'BTCUSD_PERP': "30",
-    'SOLUSD_PERP': "150",
+    'SOLUSD_PERP': "180",
     'ETHUSD_PERP': "12",
     'BNBUSD_PERP': "18",
     'ADAUSD_PERP': "12",
@@ -103,7 +105,8 @@ orders_total_list = {
     'AVAXUSD_PERP': "12",
     'NEARUSD_PERP': "12",
     'MATICUSD_PERP': "9",
-    'ATOMUSD_PERP': "12"
+    'ATOMUSD_PERP': "12",
+    'XTZUSD_PERP': "3"
 }
 
 # CONT in one order
@@ -132,7 +135,8 @@ cont_per_order_list = {
     'AVAXUSD_PERP': "1",
     'NEARUSD_PERP': "1",
     'MATICUSD_PERP': "1",
-    'ATOMUSD_PERP': "2"
+    'ATOMUSD_PERP': "2",
+    'XTZUSD_PERP': "1"
 }
 
 trade_pair = ""
