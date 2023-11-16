@@ -8,6 +8,7 @@ from binance_d.base.printobject import *
 from binance_d.model.constant import *
 import time
 import json
+import math
 
 secret_file = open('secrets.json', )
 secrets = json.load(secret_file)
@@ -79,14 +80,14 @@ cont_to_usd_list = {
     'XTZUSD_PERP': "10"
 }
 
-# Max orders per token.
+# Max orders per token, up to 320
 orders_total_list = {
-    'BTCUSD_PERP': "30",
-    'SOLUSD_PERP': "180",
-    'ETHUSD_PERP': "12",
-    'BNBUSD_PERP': "18",
+    'BTCUSD_PERP': "9",
+    'SOLUSD_PERP': "90",
+    'ETHUSD_PERP': "36",
+    'BNBUSD_PERP': "160",
     'ADAUSD_PERP': "12",
-    'DOTUSD_PERP': "18",
+    'DOTUSD_PERP': "90",
     'XRPUSD_PERP': "12",
     'LUNAUSD_PERP': "30",
     'LTCUSD_PERP': "9",
@@ -112,9 +113,9 @@ orders_total_list = {
 # CONT in one order
 cont_per_order_list = {
     'BTCUSD_PERP': "1",
-    'SOLUSD_PERP': "1",
-    'ETHUSD_PERP': "1",
-    'BNBUSD_PERP': "2",
+    'SOLUSD_PERP': "6",
+    'ETHUSD_PERP': "6",
+    'BNBUSD_PERP': "20",
     'ADAUSD_PERP': "1",
     'DOTUSD_PERP': "1",
     'XRPUSD_PERP': "1",
@@ -239,28 +240,34 @@ low_token_total: int = token_total - high_token_total
 
 if current_price > 1000:
     round_decimal = 0
+    round_decimal_div = 1
     format_decimal = "{:.0f}"
 elif current_price > 100:
     round_decimal = 1
+    round_decimal_div = 10
     format_decimal = "{:.1f}"
 elif current_price > 10:
     round_decimal = 2
+    round_decimal_div = 100
     format_decimal = "{:.2f}"
 elif current_price > 1:
     round_decimal = 3
+    round_decimal_div = 1000
     format_decimal = "{:.3f}"
 elif current_price > 0.1:
     round_decimal = 4
+    round_decimal_div = 10000
     format_decimal = "{:.4f}"
 else:
     round_decimal = 5
+    round_decimal_div = 100000
     format_decimal = "{:.5f}"
 print('round_decimal', round_decimal)
 print('format_decimal', format_decimal)
 
 mid_price: float = float(round(low_price + (high_price - low_price) / 2, round_decimal))
-low_grid_step: float = float(round((mid_price - low_price) / low_token_total, round_decimal))
-high_grid_step: float = float(round((mid_price - low_price) / high_token_total, round_decimal))
+low_grid_step: float = float(math.ceil((mid_price - low_price) * round_decimal_div / low_token_total) / round_decimal_div)
+high_grid_step: float = float(math.ceil((mid_price - low_price) * round_decimal_div / high_token_total) / round_decimal_div)
 print("Total:", cont_per_order * (low_token_total + high_token_total), token, "/",
       cont_to_usd * cont_per_order * (low_token_total + high_token_total), "USD")
 print(">>> Low grid:", low_token_total, "orders from", low_price, "to", mid_price, "with step", low_grid_step)
@@ -272,17 +279,17 @@ for cont in range(1, low_token_total + 1):
     time.sleep(0.02)
     next_price: str = format_decimal.format(low_price + (cont * low_grid_step))
     print(">>> ", token, " ", cont, ": Price", next_price)
-    result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
-                                       price=next_price, quantity=cont_per_order,
-                                       timeInForce=TimeInForce.GTC)
+    # result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
+    #                                    price=next_price, quantity=cont_per_order,
+    #                                    timeInForce=TimeInForce.GTC)
 
 for cont in range(1, high_token_total + 1):
     time.sleep(0.02)
     next_price = format_decimal.format(mid_price + (cont * high_grid_step))
     print(">>> ", token, " ", cont, ": Price", next_price)
-    result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
-                                       price=next_price, quantity=cont_per_order,
-                                       timeInForce=TimeInForce.GTC)
+    # result = request_client.post_order(symbol=trade_pair, side=OrderSide.BUY, ordertype=OrderType.LIMIT,
+    #                                    price=next_price, quantity=cont_per_order,
+    #                                    timeInForce=TimeInForce.GTC)
 
 # Get all orders
 # result = request_client.get_all_orders(symbol=trade_pair)
